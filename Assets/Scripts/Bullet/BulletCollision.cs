@@ -47,10 +47,11 @@ public class BulletCollision : MonoBehaviour {
         if (characterOther)
         {
             //如果子弹碰撞不同阵营角色
-            if ((characterSelf.kind == 0 && (characterOther.kind > 100 && characterOther.kind < 200))
-                || ((characterSelf.kind > 100 && characterSelf.kind < 200) && characterOther.kind == 0))
+            //if ((characterSelf.kind == 0 && (characterOther.kind > 100 && characterOther.kind < 200))
+            //    || ((characterSelf.kind > 100 && characterSelf.kind < 200) && characterOther.kind == 0))
+            if(characterSelf.group*characterOther.group<=0)
             {
-                if (!characterOther.immune) //不处于免疫状态
+                if (!characterOther.immune&&characterOther.alive) //存活且不处于免疫状态
                 {
                     characterOther.BeHit(bulletBase);   //被击中角色的处理方法
                     if(--bulletBase.survivalCollision<=0)    //子弹剩余碰撞次数-1
@@ -76,7 +77,7 @@ public class BulletCollision : MonoBehaviour {
 
                     }
 
-                    if (characterSelf.kind == 0)   //计算连击
+                    if (characterSelf.group == 1)   //计算连击
                     {
                         Statistic.Instance.ComboAcc();
                     }

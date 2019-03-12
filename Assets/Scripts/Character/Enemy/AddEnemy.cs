@@ -10,7 +10,7 @@ public class AddEnemy : MonoBehaviour {
     {
         if (collision.gameObject.GetComponent <Character>())
         {
-            if (collision.gameObject.GetComponent<Character>().kind == 0)
+            if (collision.gameObject.GetComponent<Character>().group == 1)
             {
                 foreach (var item in Enemys)
                 {

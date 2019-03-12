@@ -5,12 +5,12 @@ using UnityEngine;
 public class AvtiveCharacter : MonoBehaviour {
 
     public GameObject[] Aims;   //待激活角色
-    public int trrigerNum;  //触发该机关的角色类型
+    public int trrigerGroup;  //触发该机关的角色阵营
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<Character>())
         {
-            if (collision.gameObject.GetComponent<Character>().kind == trrigerNum)
+            if (collision.gameObject.GetComponent<Character>().group == trrigerGroup)
             {
                 foreach (GameObject item in Aims)
                 {

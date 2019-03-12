@@ -17,7 +17,8 @@ public class Character : MonoBehaviour {
     public float magAtk;    //魔法攻击力
     public float speedX;
     public float speedY;
-    public int kind;   //0:hero    101-199:enemy    201-299:weapon
+    public int group;   
+    public int kindNo;  //    101-199:enemy 
     //public string charactorName;
 
     public bool xDirection; //角色x轴朝向  true：右
@@ -26,7 +27,7 @@ public class Character : MonoBehaviour {
     public int state;   //异常状态
     public bool action;  //可行动
 
-    virtual public void BeHit(BulletBase bulletBase) { }   //被击中
+   
 
     public float halfy =0;
 
@@ -57,9 +58,10 @@ public class Character : MonoBehaviour {
         //health = defaultHealth;
     }
 
-    virtual protected void Update () {
+ //   virtual protected void Update () {
 
-	}
+	//}
+
     virtual protected void FixedUpdate()
     {
         //根据sprite底部y轴位置设定z轴位置，实现遮挡效果
@@ -69,8 +71,14 @@ public class Character : MonoBehaviour {
         if (alive && health <= 0)
         {
             alive = false;
-            die.Invoke();
+            OnDie();
         }
         
+    }
+
+    virtual public void BeHit(BulletBase bulletBase) { }   //被击中
+    virtual protected void OnDie()
+    {
+        die.Invoke();
     }
 }

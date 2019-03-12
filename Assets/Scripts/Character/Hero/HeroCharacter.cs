@@ -23,13 +23,52 @@ public class HeroCharacter : Character {
         Camera.main.gameObject.GetComponent<CameraFollow>().FollowHero(gameObject);
     }
 
-    protected override void Update () {
-        base.Update();
-        
-	}
+    //   protected override void Update () {
+    //       base.Update();
 
-    public void Death()
+    //}
+
+    protected override void OnDie()
     {
-        UIManager.Instance.PushUIPanel("PanelEnd");
+        //base.OnDie();
+        alive = false;
+        action = false;
+
+        Rigidbody2D rigidbody2D = GetComponent<Rigidbody2D>();
+        if(rigidbody2D!=null)
+        {
+            rigidbody2D.velocity = new Vector2(0, 0);
+        }
+        BoxCollider2D boxCollider2D = GetComponent<BoxCollider2D>();
+        if(boxCollider2D!=null)
+        {
+            boxCollider2D.enabled = false;
+        }
+        die.Invoke();
+        StartCoroutine(Common.Common.WaitTime(1f, GameLose));
+    }
+
+    protected void GameLose()
+    {
+        UIManager.Instance.PushUIPanel("PanelLose");
+    }
+
+    public void Revive()
+    {
+        BoxCollider2D boxCollider2D = GetComponent<BoxCollider2D>();
+        if (boxCollider2D != null)
+        {
+            boxCollider2D.enabled = true;
+        }
+
+        health = defaultHealth;
+        immune = true;
+        action = true;
+        alive = true;
+        StartCoroutine(Common.Common.WaitTime(1f, EndImmune));
+    }
+    protected void EndImmune()
+    {
+        immune = false;
     }
 }

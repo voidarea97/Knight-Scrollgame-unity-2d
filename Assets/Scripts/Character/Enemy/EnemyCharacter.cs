@@ -132,7 +132,7 @@ public class EnemyCharacter : Character {
         if (health <= 0)
             OnDie();
     }
-    protected void OnDie()
+    override protected void OnDie()
     {
         if (selfRigidbody != null)
 

@@ -84,17 +84,17 @@ public class CharacterSkill : MonoBehaviour {
         if (num > skills.Length)
             return;
         if(stateMachine!=null)
-            num=stateMachine.JudgeState(num);  //通过状态机判断应该释放的技能
+            num=stateMachine.JudgeState(num);  //通过状态机现在状态判断当前应该释放的技能
         SkillProperty skillProperty = skills[num - 1];
         if (skillProperty == null)
             return;
 
-        if (GetComponent<Character>().action==true && skillProperty.flashing <= 0) //未在冷却
+        if (GetComponent<Character>().action==true && skillProperty.flashing <= 0) //技能未在冷却
         {
             skillProperty.flashing = skillProperty.flash[skillProperty.level-1]; //重置冷却
             {
 
-                //状态机转换
+                //释放技能成功，状态机转换
                 if (stateMachine != null)
                     stateMachine.TransformState(num);
                 //技能动画
