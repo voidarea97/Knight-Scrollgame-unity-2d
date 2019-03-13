@@ -16,7 +16,8 @@ public class PassPoint : MonoBehaviour {
             if(obj.GetComponent<Character>().group==1)
             {
                 chapter.Settle();
+                gameObject.SetActive(false);
             }
-        gameObject.SetActive(false);
+        
     }
 }

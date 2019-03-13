@@ -28,10 +28,10 @@ public class HeroControl : MonoBehaviour {
         //joystick = GameObject.Find("UIPlay/Control/JoystickBack").GetComponent<PlayerController>();
 
         //初始化相机位置
-        Vector3 cameraPos = Camera.main.transform.position;
-        cameraPos.x =gameObject.transform.position.x + 3.5f;
-        Camera.main.transform.position = cameraPos;
-
+        //Vector3 cameraPos = Camera.main.transform.position;
+        //cameraPos.x =gameObject.transform.position.x + 3.5f;
+        //Camera.main.transform.position = cameraPos;
+        Camera.main.gameObject.GetComponent<CameraFollow>().FollowHero(gameObject);
 
         GameMessage.Instance.ControllerMoveEvent += new GameMessage.ControllerMoveHandler(ControllerMoveListener);
         GameMessage.Instance.ControllerButtonEvent += new GameMessage.ControllerButtonHandler(ControllerButtonListener);

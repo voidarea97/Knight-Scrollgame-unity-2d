@@ -32,6 +32,11 @@ public class CharacterAnime : MonoBehaviour {
     {
         characterAnimator.SetTrigger("BeHit");
     }
+
+    public void PlayAnime(string name)
+    {
+        characterAnimator.Play(name);
+    }
     //public void EndBehit()
     //{
     //    heroAnimator.SetBool("Behit", false);

@@ -5,6 +5,7 @@ using UnityEngine;
 public class HeroCharacter : Character {
 
     private CharacterAnime heroAnime;
+    private CharacterSkill heroSkill;
     //private Statistic statistic;
 
 
@@ -12,15 +13,30 @@ public class HeroCharacter : Character {
     {
         health -= bulletBase.damage;    //损失生命值等于子弹伤害
         heroAnime.TriggerBehit();
-        Statistic.Instance.BeHitAcc();
+        Statistic.Instance.BeHitAcc();  //统计被击数
         //statistic.behits++;
     }
 
     protected override void Start () {
-        base.Start();
+ 
         heroAnime = gameObject.GetComponent<CharacterAnime>();
+        heroSkill = GetComponent<CharacterSkill>();
+
+
+        //更新英雄属性
+        level = GameInfo.Instance.heroLevel;
+        defaultHealth = GameInfo.Instance.health;
+        phyAtk = GameInfo.Instance.atk;
+        if(heroSkill)
+        {
+            heroSkill.skills[0].level = GameInfo.Instance.skill1;
+            heroSkill.skills[1].level = GameInfo.Instance.skill2;
+            heroSkill.skills[2].level = GameInfo.Instance.skill3;
+        }
+
+        base.Start();
         //statistic = gameObject.GetComponent<Statistic>();
-        Camera.main.gameObject.GetComponent<CameraFollow>().FollowHero(gameObject);
+        //Camera.main.gameObject.GetComponent<CameraFollow>().FollowHero(gameObject);
     }
 
     //   protected override void Update () {
@@ -28,7 +44,7 @@ public class HeroCharacter : Character {
 
     //}
 
-    protected override void OnDie()
+    protected override void OnDie() //死亡
     {
         //base.OnDie();
         alive = false;
@@ -44,6 +60,12 @@ public class HeroCharacter : Character {
         {
             boxCollider2D.enabled = false;
         }
+
+        if (heroAnime)
+        {
+            heroAnime.PlayAnime("Die");
+        }
+
         die.Invoke();
         StartCoroutine(Common.Common.WaitTime(1f, GameLose));
     }
@@ -53,7 +75,7 @@ public class HeroCharacter : Character {
         UIManager.Instance.PushUIPanel("PanelLose");
     }
 
-    public void Revive()
+    public void Revive()    //复活
     {
         BoxCollider2D boxCollider2D = GetComponent<BoxCollider2D>();
         if (boxCollider2D != null)
@@ -65,6 +87,10 @@ public class HeroCharacter : Character {
         immune = true;
         action = true;
         alive = true;
+        if(heroAnime)
+        {
+            heroAnime.PlayAnime("Ide");
+        }
         StartCoroutine(Common.Common.WaitTime(1f, EndImmune));
     }
     protected void EndImmune()

@@ -66,7 +66,7 @@ public class BulletCollision : MonoBehaviour {
                         //播放碰撞消散动画
                         if (animator)
                         {
-                            animator.SetTrigger("Collision");
+                            animator.SetTrigger("Collision");                            
                         }
 
                         //StartCoroutine(DelayDestroy(bulletBase.collisionRemainTime));     

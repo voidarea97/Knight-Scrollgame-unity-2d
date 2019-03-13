@@ -10,6 +10,7 @@ public class Character : MonoBehaviour {
 
     public string CharacterName;
     public bool alive;
+    public int level;
     public float health;
     public float defaultHealth;
     public bool immune; //免疫伤害

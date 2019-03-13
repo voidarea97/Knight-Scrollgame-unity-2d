@@ -17,18 +17,25 @@ public class PanelReady : UIBase {
     public Text textNumHealth;
     private int health;
     private int healthTemp;
+
     public Text textNumAttack;
     private int attack;
     private int attackTemp;
+
     public Text textNumSkill1;
     private int skill1;
     private int skill1Temp;
+    public int skill1Maxlevel;
+
     public Text textNumSkill2;
     private int skill2;
     private int skill2Temp;
+    public int skill2Maxlevel;
+
     public Text textNumSkill3;
     private int skill3;
     private int skill3Temp;
+    public int skill3Maxlevel;
 
     public Text textPoint;
     private int point;
@@ -129,15 +136,24 @@ public class PanelReady : UIBase {
                     textNumAttack.text = attackTemp.ToString();
                     break;
                 case 3:
-                    skill1Temp += 1;
+                    if (skill1Temp < skill1Maxlevel)
+                        skill1Temp += 1;
+                    else
+                        pointTemp++;
                     textNumSkill1.text = skill1Temp.ToString();
                     break;
                 case 4:
-                    skill2Temp += 1;
+                    if (skill2Temp < skill2Maxlevel)
+                        skill2Temp += 1;
+                    else
+                        pointTemp++;
                     textNumSkill2.text = skill2Temp.ToString();
                     break;
                 case 5:
-                    skill3Temp += 1;
+                    if (skill3Temp < skill3Maxlevel)
+                        skill3Temp += 1;
+                    else
+                        pointTemp++;
                     textNumSkill3.text = skill3Temp.ToString();
                     break;
             }

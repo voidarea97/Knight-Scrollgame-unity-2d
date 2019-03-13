@@ -21,7 +21,7 @@ public class GameInfo {
         }
     }
 
-    public static readonly int maxchapter = 1;
+    public static readonly int maxchapter = 2;
     
     public int chapterProcess;  //当前可进入的关卡
     public int heroLevel;

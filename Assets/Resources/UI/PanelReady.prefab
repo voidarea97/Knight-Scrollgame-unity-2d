@@ -1525,8 +1525,11 @@ MonoBehaviour:
   textNumHealth: {fileID: 114455764462912830}
   textNumAttack: {fileID: 114543412810430754}
   textNumSkill1: {fileID: 114120525450741578}
+  skill1Maxlevel: 4
   textNumSkill2: {fileID: 114508879998457016}
+  skill2Maxlevel: 3
   textNumSkill3: {fileID: 114143447484922028}
+  skill3Maxlevel: 4
   textPoint: {fileID: 114982273996291786}
 --- !u!114 &114511183100164994
 MonoBehaviour:
