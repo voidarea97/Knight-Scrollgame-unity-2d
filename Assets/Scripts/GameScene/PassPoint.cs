@@ -13,7 +13,7 @@ public class PassPoint : MonoBehaviour {
     {
         GameObject obj = collision.gameObject;
         if (obj.GetComponent<Character>() != null)
-            if(obj.GetComponent<Character>().group==1)
+            if(obj.GetComponent<Character>().group==Character.CharacterGoup.Player)
             {
                 chapter.Settle();
                 gameObject.SetActive(false);

@@ -31,7 +31,7 @@ public class HeroControl : MonoBehaviour {
         //Vector3 cameraPos = Camera.main.transform.position;
         //cameraPos.x =gameObject.transform.position.x + 3.5f;
         //Camera.main.transform.position = cameraPos;
-        Camera.main.gameObject.GetComponent<CameraFollow>().FollowHero(gameObject);
+        //Camera.main.gameObject.GetComponent<CameraFollow>().FollowHero(gameObject);
 
         GameMessage.Instance.ControllerMoveEvent += new GameMessage.ControllerMoveHandler(ControllerMoveListener);
         GameMessage.Instance.ControllerButtonEvent += new GameMessage.ControllerButtonHandler(ControllerButtonListener);

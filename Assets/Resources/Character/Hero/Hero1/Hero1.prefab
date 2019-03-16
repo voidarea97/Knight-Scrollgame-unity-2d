@@ -301,7 +301,7 @@ MonoBehaviour:
   magAtk: 0
   speedX: 3
   speedY: 2
-  group: 1
+  group: 2
   kindNo: 0
   xDirection: 0
   yDirection: 0

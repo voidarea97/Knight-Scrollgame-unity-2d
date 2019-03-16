@@ -21,7 +21,7 @@ public class GameInfo {
         }
     }
 
-    public static readonly int maxchapter = 2;
+    public static readonly int maxchapter = 3;
     
     public int chapterProcess;  //当前可进入的关卡
     public int heroLevel;
@@ -46,11 +46,11 @@ public class GameInfo {
 
     public void Read()
     {
-        chapterProcess = PlayerPrefs.GetInt("Chapter",2);
+        chapterProcess = PlayerPrefs.GetInt("Chapter",1);
         heroLevel = PlayerPrefs.GetInt("Level",1);
         health = PlayerPrefs.GetInt("Health",100);
         atk = PlayerPrefs.GetInt("Attack",10);
-        point = PlayerPrefs.GetInt("Point", 5);
+        point = PlayerPrefs.GetInt("Point", 0);
         skill1= PlayerPrefs.GetInt("Skill1", 1);
         skill2= PlayerPrefs.GetInt("Skill2", 1);
         skill3= PlayerPrefs.GetInt("Skill3", 1);

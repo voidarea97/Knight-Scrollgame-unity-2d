@@ -194,4 +194,11 @@ public class PanelReady : UIBase {
         textNumSkill3.text = skill3.ToString();
         textPoint.text = point.ToString();
     }
+
+
+    public void GoToMainMenu()
+    {
+        UIManager.Instance.PopUIPanel();
+        UIManager.Instance.PushUIPanel("PanelStart");
+    }
 }

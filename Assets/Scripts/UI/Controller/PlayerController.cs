@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+[System.Obsolete("Replaced by GameContoller",true)]
 public class PlayerController : ScrollRect
 {
     //public float axisX;

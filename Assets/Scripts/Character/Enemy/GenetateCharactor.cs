@@ -23,11 +23,12 @@ public class GenetateCharactor : MonoBehaviour {
 
             GameObject obj = ObjectPool.Instance.GetObject(charactorName);
             obj.SetActive(false);
+            //obj.GetComponent<Character>().group = -1;
             obj.transform.position = offset;
             obj.transform.SetParent(parent.transform);
             obj.SetActive(true);
         }
-
+        Destroy(gameObject);
 	}
 
 }

@@ -6,6 +6,13 @@ using UnityEngine.Events;
 //角色属性基类
 public class Character : MonoBehaviour {
 
+    public enum CharacterGoup   //阵营
+    {
+        Enemy = 1,   //敌人
+        Neutral = 0,    //中立
+        Player = 2     //玩家
+    }
+
     public UnityEvent die;
 
     public string CharacterName;
@@ -18,7 +25,7 @@ public class Character : MonoBehaviour {
     public float magAtk;    //魔法攻击力
     public float speedX;
     public float speedY;
-    public int group;   
+    public CharacterGoup group;   
     public int kindNo;  //    101-199:enemy 
     //public string charactorName;
 

@@ -21,14 +21,15 @@ public class BackMove : MonoBehaviour {
         mid = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, 0)).x;
         if (x - mid < -(mul) * width / 2)
         {
+            //0.01f修正衔接缝隙
             GetComponent<Transform>().position = new Vector3(
-            GetComponent<Transform>().position.x + mul * width,
+            GetComponent<Transform>().position.x + mul * width -0.01f,  
             GetComponent<Transform>().position.y, GetComponent<Transform>().position.z);
         }
         else if(x - mid > (mul) * width / 2)
         {
             GetComponent<Transform>().position = new Vector3(
-            GetComponent<Transform>().position.x - mul * width,
+            GetComponent<Transform>().position.x - mul * width + 0.01f,
             GetComponent<Transform>().position.y, GetComponent<Transform>().position.z);
         }
 	}

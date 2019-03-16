@@ -225,6 +225,7 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   CharacterName: EBlueSprite
   alive: 1
+  level: 0
   health: 100
   defaultHealth: 100
   immune: 0
@@ -232,7 +233,7 @@ MonoBehaviour:
   magAtk: 0
   speedX: 1.5
   speedY: 1
-  group: -1
+  group: 1
   kindNo: 101
   xDirection: 0
   yDirection: 0

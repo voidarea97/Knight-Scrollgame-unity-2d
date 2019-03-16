@@ -38,7 +38,7 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (heroTransform)
+        if (heroTransform!=null)
         {
             Vector3 vTrans = heroTransform.position;
             if (heroTransform.gameObject.GetComponent<Character>().xDirection)
@@ -49,9 +49,9 @@ public class CameraFollow : MonoBehaviour
                     //if (vTrans.x < 0)
                     //    vTrans.x = 0;
                     if (Math.Abs(transform.position.x - heroTransform.position.x - xOffset) > 2)
-                        trans = Vector3.Lerp(transform.position, vTrans, 0.03f);
+                        trans = Vector3.Lerp(transform.position, vTrans, 0.025f);
                     else
-                        trans = Vector3.Lerp(transform.position, vTrans, 0.04f);
+                        trans = Vector3.Lerp(transform.position, vTrans, 0.035f);
                     trans.y = transform.position.y;
                     trans.z = transform.position.z;
                     transform.position = trans;
@@ -67,9 +67,9 @@ public class CameraFollow : MonoBehaviour
                     //    vTrans.x = 0;
                     //大幅移动相机时更平滑
                     if (Math.Abs(transform.position.x - heroTransform.position.x + xOffset) > 2)
-                        trans = Vector3.Lerp(transform.position, vTrans, 0.03f);
+                        trans = Vector3.Lerp(transform.position, vTrans, 0.025f);
                     else
-                        trans = Vector3.Lerp(transform.position, vTrans, 0.04f);
+                        trans = Vector3.Lerp(transform.position, vTrans, 0.035f);
 
                     trans.y = transform.position.y;
                     trans.z = transform.position.z;
@@ -78,7 +78,7 @@ public class CameraFollow : MonoBehaviour
                 }
             }
 
-            if (Math.Abs(heroTransform.position.y - heroInitialY) > 0.01f)
+            //if (Math.Abs(heroTransform.position.y - heroInitialY) > 0.01f)
             {
                 float temp = (heroTransform.position.y - heroInitialY) * yCoefficient;
                 //posBuffer = trans;

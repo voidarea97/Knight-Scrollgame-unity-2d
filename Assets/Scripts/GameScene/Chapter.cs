@@ -18,9 +18,9 @@ public class Chapter : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	//void Update () {
 		
-	}
+	//}
 
     private void OnEnable()
     {
@@ -42,14 +42,13 @@ public class Chapter : MonoBehaviour {
         //Quaternion rotation = Quaternion.Euler(-45, 0, 0);
         GameObject heroPrefab = Resources.Load("Character/Hero/Hero1/Hero1") as GameObject;
         hero = Instantiate(heroPrefab,startPoint.position,startPoint.rotation,gameObject.transform);
+        hero.SetActive(true);
+        Camera.main.gameObject.GetComponent<CameraFollow>().FollowHero(hero);
     }
 
     public void Settle()    //过关结算
     {
         Statistic.Instance.EndTiming();
-        if (number + 1 > GameInfo.Instance.chapterProcess&&number+1<=GameInfo.maxchapter)
-            GameInfo.Instance.chapterProcess = number + 1;
-        GameInfo.Instance.point += point;
 
         hero.GetComponent<Character>().action = false;
         hero.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
@@ -57,7 +56,14 @@ public class Chapter : MonoBehaviour {
         if (hero.GetComponent<Animator>())
             hero.GetComponent<Animator>().Play("Win");
         Time.timeScale = 0;
-        StartCoroutine(Common.Common.WaitTime(WaitTime,SettleLate));   
+
+        StartCoroutine(Common.Common.WaitTime(WaitTime, SettleLate));
+
+        if (number + 1 > GameInfo.Instance.chapterProcess && number + 1 <= GameInfo.maxchapter)
+            GameInfo.Instance.chapterProcess = number + 1;
+        GameInfo.Instance.point += point;
+
+        GameInfo.Instance.Store();
     }
 
     private void SettleLate()
@@ -68,4 +74,6 @@ public class Chapter : MonoBehaviour {
     //{
     //    yield return new WaitForSecondsRealtime(time);
     //}
+
+    
 }
