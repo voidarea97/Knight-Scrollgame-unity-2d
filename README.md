@@ -30,6 +30,9 @@
 调整优化摇杆
 注意anchoredPosition计算方法
 
+3/24
+游戏音效与背景音乐模块
+
 运行截图：
 
 ![Image text](https://github.com/voidarea97/Knight-Scrollgame-unity-2d/blob/master/Screenshot/1.png)
@@ -54,6 +57,4 @@
 
 ![Image text](https://github.com/voidarea97/Knight-Scrollgame-unity-2d/blob/master/Screenshot/11.png)
 
-待实装：
 
-音效，训练场
