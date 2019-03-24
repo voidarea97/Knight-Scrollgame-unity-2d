@@ -31,10 +31,10 @@ public class PanelPlayOption : UIBase {
         
         gameObject.SetActive(true);
 
-        MusicOn.SetActive(AudioManager.Instance.bMusic);
-        MusicOff.SetActive(!AudioManager.Instance.bMusic);
-        SoundOn.SetActive(AudioManager.Instance.bSound);
-        SoundOff.SetActive(!AudioManager.Instance.bSound);
+        MusicOn.SetActive(AudioManager.Instance.BMusic);
+        MusicOff.SetActive(!AudioManager.Instance.BMusic);
+        SoundOn.SetActive(AudioManager.Instance.BSound);
+        SoundOff.SetActive(!AudioManager.Instance.BSound);
     }
 
     public override void OnPausing()
@@ -55,16 +55,16 @@ public class PanelPlayOption : UIBase {
 
     public void MusicOnOff()
     {
-        AudioManager.Instance.bMusic = !AudioManager.Instance.bMusic;
-        MusicOn.SetActive(AudioManager.Instance.bMusic);
-        MusicOff.SetActive(!AudioManager.Instance.bMusic);
+        AudioManager.Instance.BMusic = !AudioManager.Instance.BMusic;
+        MusicOn.SetActive(AudioManager.Instance.BMusic);
+        MusicOff.SetActive(!AudioManager.Instance.BMusic);
     }
 
     public void SoundOnOff()
     {
-        AudioManager.Instance.bSound = !AudioManager.Instance.bSound;
-        SoundOn.SetActive(AudioManager.Instance.bSound);
-        SoundOff.SetActive(!AudioManager.Instance.bSound);
+        AudioManager.Instance.BSound = !AudioManager.Instance.BSound;
+        SoundOn.SetActive(AudioManager.Instance.BSound);
+        SoundOff.SetActive(!AudioManager.Instance.BSound);
     }
 
     public void ContinueGame()

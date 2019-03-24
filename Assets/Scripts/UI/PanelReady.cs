@@ -44,6 +44,11 @@ public class PanelReady : UIBase {
     private int healthDelta;   //1 point对应的health
     private int attackDelta;
 
+
+    public Button btnBack;
+    public Button btnStart;
+    public Button btnConfirm;
+
     private void Awake()
     {
         Name = "PanelSelect";
@@ -89,11 +94,15 @@ public class PanelReady : UIBase {
     }
     public override void OnPausing()
     {
-        
+        btnBack.enabled = false;
+        btnStart.enabled = false;
+        btnConfirm.enabled = false;
     }
     public override void OnResuming()
     {
-        
+        btnBack.enabled = true;
+        btnStart.enabled = true;
+        btnConfirm.enabled = true;
     }
     public override void OnExitng()
     {

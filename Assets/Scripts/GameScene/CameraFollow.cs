@@ -11,6 +11,7 @@ public class CameraFollow : MonoBehaviour
     Vector3 trans;
 
     public Vector3 cameraInitialPos;    //相机初始位置
+    public Vector3 cameraInitialLocal;
     public float xOffset;  //镜头偏移
     public float yCoefficient;
     Vector3 posBuffer;
@@ -30,6 +31,7 @@ public class CameraFollow : MonoBehaviour
     void Start()
     {
         cameraInitialPos = transform.position;
+        cameraInitialLocal = transform.localPosition;
         //posBuffer = cameraInitialPos;
         //heroTransform = GameObject.FindWithTag("Hero").transform;
         //xDis = 3.5f;
@@ -82,10 +84,11 @@ public class CameraFollow : MonoBehaviour
             {
                 float temp = (heroTransform.position.y - heroInitialY) * yCoefficient;
                 //posBuffer = trans;
-                trans.y = cameraInitialPos.y + temp;
-                trans.z = cameraInitialPos.z - temp;
+                trans = transform.localPosition;
+                //trans.y = cameraInitialLocal.y + temp;
+                trans.z = cameraInitialLocal.z + temp;
                 //trans = posBuffer;
-                transform.position = trans;
+                transform.localPosition = trans;
             }
 
         }

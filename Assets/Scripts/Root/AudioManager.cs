@@ -18,13 +18,14 @@ public class AudioManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         audioSource.loop = true;
         audioSource.playOnAwake = true;
-        bSound = true;
+        BSound = true;
     }
 
-    public bool bSound;
+    public bool BSound
+    { get; set; }
 
     #region BGM
-    public bool bMusic
+    public bool BMusic
     {
         get { return !audioSource.mute; }
         set
@@ -42,7 +43,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayBGM(string name)
     {
-        string path = "Audio" +name;
+        string path = "Audio/" +name;
         AudioClip ac = Resources.Load<AudioClip>(path);
         audioSource.clip = ac;
         audioSource.Play();

@@ -12,7 +12,7 @@ public class GameRoot : MonoBehaviour {
     void Start () {
         UIManager.Instance.PushUIPanel("UIMainMenu");
         UIManager.Instance.PushUIPanel("PanelStart");
-        //AudioManager.Instance.PlayBGM("Audio/bgm.mp3");
+        AudioManager.Instance.PlayBGM("bgm");
 	}
 	
 	// Update is called once per frame

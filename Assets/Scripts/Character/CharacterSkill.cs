@@ -6,6 +6,7 @@ public class CharacterSkill : MonoBehaviour {
 
     public SkillProperty []skills;
     protected CharacterAnime characterAnime;
+    protected CharacterAudio characterAudio;
     protected Rigidbody2D characterRigidbody;
     public GameObject globalBullet;
     public SkillStateMachine stateMachine;
@@ -98,8 +99,17 @@ public class CharacterSkill : MonoBehaviour {
                 if (stateMachine != null)
                     stateMachine.TransformState(num);
                 //技能动画
-                characterAnime.EndRun();
-                characterAnime.StartSkill(skillProperty.skillName);
+                if (characterAnime != null)
+                {
+                    characterAnime.EndRun();
+                    characterAnime.StartSkill(skillProperty.skillName);
+                }
+                if(characterAudio!=null)
+                {
+                    if(AudioManager.Instance.BSound)
+                        characterAudio.PlayAudio(skillProperty.skillName);
+                }
+
                 
                 Vector3 offset = gameObject.transform.position;
                 //调整子弹位置
@@ -153,6 +163,7 @@ public class CharacterSkill : MonoBehaviour {
     virtual protected void Start()
     {
         characterAnime = gameObject.GetComponent<CharacterAnime>();
+        characterAudio = gameObject.GetComponent<CharacterAudio>();
         characterRigidbody = gameObject.GetComponent<Rigidbody2D>();
         globalBullet = GameObject.FindGameObjectWithTag("GlobalBullet");
     }
